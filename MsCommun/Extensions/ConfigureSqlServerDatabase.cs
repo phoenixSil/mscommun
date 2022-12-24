@@ -7,17 +7,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using MsCommun.Settings;
 
 namespace MsCommun.Extensions
 {
     public static class ConfigureSqlServerDatabase
     {
-        public static IServiceCollection AddSqlServerDbConfiguration<T>(this IServiceCollection services, string connectionstring)
+        public static IServiceCollection AddSqlServerDbConfiguration<T>(this IServiceCollection services, IConfiguration configuration)
             where T : DbContext
         {
             services.AddDbContext<T>(options =>
             {
-                options.UseSqlServer(connectionstring);
+                var sqlServerSetting = configuration.GetSection(nameof(SQLServerSettings)).Get<SQLServerSettings>();
+                var connectionString = $"Server={sqlServerSetting.Server};Database={sqlServerSetting.Database};Trusted_Connection={sqlServerSetting.TrusterdConnection};MultipleActiveResultSets={sqlServerSetting.MultipleActiveResultSets}";
+                options.UseSqlServer(connectionString);
             });
 
             services.AddScoped(typeof(IRepertoireGenerique<>), typeof(RepertoireGenerique<>));
