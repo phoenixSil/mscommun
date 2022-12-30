@@ -6,7 +6,7 @@
         SERVICE_GIE,
         SERVICE_GEENS,
         SERVICE_GDC,
-        SERVICE_GETP,
+        SERVICE_GETPS,
         SERVICE_GEMPS
     }
 }
