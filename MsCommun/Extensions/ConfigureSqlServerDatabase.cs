@@ -20,7 +20,7 @@ namespace MsCommun.Extensions
             services.AddDbContext<T>(options =>
             {
                 var sqlServerSetting = configuration.GetSection(nameof(SQLServerSettings)).Get<SQLServerSettings>();
-                var connectionString = $"Server={sqlServerSetting.Server};Database={sqlServerSetting.Database};Trusted_Connection={sqlServerSetting.TrusterdConnection};MultipleActiveResultSets={sqlServerSetting.MultipleActiveResultSets}";
+                var connectionString = $"Server={sqlServerSetting.Server};Database={sqlServerSetting.Database};User Id={sqlServerSetting.Utilisateur};Password={sqlServerSetting.MotDePasse};";
                 options.UseSqlServer(connectionString);
             });
 
