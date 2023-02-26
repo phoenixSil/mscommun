@@ -14,5 +14,6 @@ namespace MsCommun.Settings
         public bool MultipleActiveResultSets { get;  set; }
         public string Utilisateur { get; set; }
         public string MotDePasse { get; set; }
+        public string Port { get; set; }
     }
 }

@@ -20,9 +20,13 @@ namespace MsCommun.Extensions
             services.AddDbContext<T>(options =>
             {
                 var sqlServerSetting = configuration.GetSection(nameof(SQLServerSettings)).Get<SQLServerSettings>();
-                var connectionString = $"Server={sqlServerSetting.Server};Database={sqlServerSetting.Database};User Id={sqlServerSetting.Utilisateur};Password={sqlServerSetting.MotDePasse};";
+                var connectionString = $"Server={sqlServerSetting.Server};Initial Catalog={sqlServerSetting.Database},{sqlServerSetting.Port};User Id={sqlServerSetting.Utilisateur};Password={sqlServerSetting.MotDePasse};";
                 options.UseSqlServer(connectionString);
             });
+
+            using var scope = services.BuildServiceProvider().CreateScope();
+            var database = scope.ServiceProvider.GetRequiredService<T>();
+            database.Database.Migrate();
 
             services.AddScoped(typeof(IRepertoireGenerique<>), typeof(RepertoireGenerique<>));
 

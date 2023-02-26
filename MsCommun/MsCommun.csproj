@@ -7,18 +7,18 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Company>FataDev</Company>
     <Description>Package qui rassembles tous les services  commun au microservices de lapplication schoolap </Description>
-    <Copyright>Novembre 2022</Copyright>
-    <PackageIcon>logo.jpg</PackageIcon>
-    <PackageOutputPath>D:\Projets\Schoolap\NugetPackages</PackageOutputPath>
+    <Copyright>Fevrier 2022</Copyright>
+    <PackageIcon>logo2.jpg</PackageIcon>
+    <PackageOutputPath>C:\Users\sillery.tallakouanta\Documents\Schoolap\NugetPackages</PackageOutputPath>
     <Title>sapp.util.commun</Title>
     <Product>Sapp</Product>
     <Authors>phoenixdd</Authors>
     <NeutralLanguage>fr-CA</NeutralLanguage>
     <RepositoryUrl>https://github.com/phoenixSil/mscommun</RepositoryUrl>
     <RepositoryType>https://github.com/phoenixSil/mscommun.git</RepositoryType>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <FileVersion>1.1.0</FileVersion>
-    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.2</AssemblyVersion>
+    <FileVersion>1.1.2</FileVersion>
+    <Version>1.1.2</Version>
     <SignAssembly>False</SignAssembly>
   </PropertyGroup>
 
@@ -45,7 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="C:\Users\tsill\Desktop\logo.jpg">
+    <None Include="..\..\..\..\Desktop\logo2.jpg">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
