@@ -16,9 +16,9 @@
     <NeutralLanguage>fr-CA</NeutralLanguage>
     <RepositoryUrl>https://github.com/phoenixSil/mscommun</RepositoryUrl>
     <RepositoryType>https://github.com/phoenixSil/mscommun.git</RepositoryType>
-    <AssemblyVersion>1.1.2</AssemblyVersion>
-    <FileVersion>1.1.2</FileVersion>
-    <Version>1.1.2</Version>
+    <AssemblyVersion>1.1.3</AssemblyVersion>
+    <FileVersion>1.1.3</FileVersion>
+    <Version>1.1.3</Version>
     <SignAssembly>False</SignAssembly>
   </PropertyGroup>
 

@@ -17,16 +17,24 @@ namespace MsCommun.Extensions
         public static IServiceCollection AddSqlServerDbConfiguration<T>(this IServiceCollection services, IConfiguration configuration)
             where T : DbContext
         {
-            services.AddDbContext<T>(options =>
+            try
             {
-                var sqlServerSetting = configuration.GetSection(nameof(SQLServerSettings)).Get<SQLServerSettings>();
-                var connectionString = $"Server={sqlServerSetting.Server};Initial Catalog={sqlServerSetting.Database},{sqlServerSetting.Port};User Id={sqlServerSetting.Utilisateur};Password={sqlServerSetting.MotDePasse};";
-                options.UseSqlServer(connectionString);
-            });
+                services.AddDbContext<T>(options =>
+                {
+                    var sqlServerSetting = configuration.GetSection(nameof(SQLServerSettings)).Get<SQLServerSettings>();
+                    var connectionString = $"Server={sqlServerSetting.Server},{sqlServerSetting.Port};Initial Catalog={sqlServerSetting.Database},{sqlServerSetting.Port};User Id={sqlServerSetting.Utilisateur};Password={sqlServerSetting.MotDePasse};";
+                    options.UseSqlServer(connectionString);
+                });
 
-            using var scope = services.BuildServiceProvider().CreateScope();
-            var database = scope.ServiceProvider.GetRequiredService<T>();
-            database.Database.Migrate();
+                using var scope = services.BuildServiceProvider().CreateScope();
+                var database = scope.ServiceProvider.GetRequiredService<T>();
+                database.Database.Migrate();
+            }
+            catch (Exception exept)
+            {
+                Console.WriteLine($"une erreur est survenue {exept.Message}");
+                throw new Exception();
+            }
 
             services.AddScoped(typeof(IRepertoireGenerique<>), typeof(RepertoireGenerique<>));
 
